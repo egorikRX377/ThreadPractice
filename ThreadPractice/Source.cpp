@@ -3,6 +3,7 @@
 #include <mutex>
 #include <Windows.h>
 #include <vector>
+#include "FindMinElement.h"
 
 using namespace std;
 
@@ -63,5 +64,15 @@ int main()
 	}
 
 	cout << endl;
+
+
+	vector<int> data3 = { 0, -1, 8, 9, 5, 3, -2, -9, 20, 100};
+
+	int minElement1 = findMinElement(data3, 0, 9);
+	cout << "Результат работы функции нахождения минимального элемента в одном потоке: " << minElement1 << endl;
+ 
+	int minElement2 = parallelFindMinElement(data3, thread::hardware_concurrency());
+	cout << "Результат работы функции нахождения минимального элемента в многопоточном режиме: " << minElement2 << endl;
+
 	return 0;
 }
